@@ -1,29 +1,18 @@
+import java.util.Stack;
 class Solution {
-    public String makeSmallestPalindrome(String s) {
-         char[] charArray = s.toCharArray();
-        int left = 0;
-        int right = charArray.length - 1;
-        String str = "";
+    public int minLength(String s) {
+       Stack<Character> stack = new Stack<>();
 
-        while (left <= right) {
-            if (charArray[left] < charArray[right]) {
-                charArray[right] = charArray[left];
+        for (char c : s.toCharArray()) {
+            if (!stack.isEmpty() && ((stack.peek() == 'A' && c == 'B') || (stack.peek() == 'C' && c == 'D'))) {
+                stack.pop();
+            } else {
+                stack.push(c);
             }
-            
-            if (charArray[left] > charArray[right]) {
-                charArray[left] = charArray[right];
-            }
-            
-            
-            left++;
-            right--;
-        }
-        
-        for(int i = 0;i < charArray.length; i++){
-            str += charArray[i];
         }
 
-        return str;
-    
+        return stack.size();
     }
+
+    
 }
