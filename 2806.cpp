@@ -19,6 +19,6 @@ public:
             ans = purchaseAmount + 10 - purchaseAmount % 10;
         }
 
-        return 100 - ans; 
+        return 100 - ans;
     }
 };
